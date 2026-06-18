@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamer Doğu Kaya — Petra Natural</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#241b14;
+    --clay:#8c5a3c;
+    --moss:#5c6b47;
+    --moss-dark:#46512f;
+    --sand:#d9c4a0;
+    --bone:#f7f2e7;
+    --rust:#a85a35;
+    --whatsapp:#3f7a4f;
+    --line: rgba(36,27,20,0.12);
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--ink);
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+  }
+
+  body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 16px;
+    background:
+      radial-gradient(circle at 30% 0%, rgba(140,90,60,0.25), transparent 55%),
+      radial-gradient(circle at 80% 100%, rgba(92,107,71,0.22), transparent 55%),
+      var(--ink);
+  }
+
+  .card{
+    width:100%;
+    max-width:400px;
+    background:var(--bone);
+    border-radius:26px;
+    overflow:hidden;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+
+  /* ---- Strata header (signature element) ---- */
+  .strata{
+    position:relative;
+    height:148px;
+    overflow:hidden;
+    background:var(--sand);
+  }
+  .strata svg{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+  .wordmark{
+    position:absolute;
+    left:50%;
+    top:38%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:var(--bone);
+    z-index:3;
+  }
+  .wordmark .brand{
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.34em;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.18), 0 -1px 1px rgba(0,0,0,0.45);
+  }
+  .wordmark .brand-sub{
+    display:block;
+    margin-top:3px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px;
+    letter-spacing:0.22em;
+    color: rgba(247,242,231,0.75);
+  }
+
+  .avatar{
+    position:relative;
+    z-index:4;
+    width:74px; height:74px;
+    margin:-37px auto 0;
+    border-radius:50%;
+    background:var(--moss-dark);
+    border:4px solid var(--bone);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:24px;
+    color:var(--bone);
+  }
+
+  /* ---- Identity ---- */
+  .identity{
+    text-align:center;
+    padding:14px 28px 6px;
+  }
+  .identity h1{
+    margin:0;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:25px;
+    letter-spacing:0.01em;
+    color:var(--ink);
+  }
+  .identity p{
+    margin:6px 0 0;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--clay);
+  }
+
+  /* ---- Contact list ---- */
+  .info{
+    margin:18px 22px 0;
+    border-top:1px solid var(--line);
+  }
+  .info a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:13px 2px;
+    border-bottom:1px solid var(--line);
+    text-decoration:none;
+    color:var(--ink);
+    font-size:14px;
+    transition:opacity .15s ease;
+  }
+  .info a:hover{ opacity:0.65; }
+  .info a .ic{
+    flex:0 0 auto;
+    width:32px; height:32px;
+    border-radius:9px;
+    background:rgba(140,90,60,0.1);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--clay);
+  }
+  .info a span.label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(36,27,20,0.45);
+    display:block;
+    margin-bottom:2px;
+  }
+  .info a .txt{ line-height:1.25; min-width:0; overflow-wrap:anywhere; }
+
+  /* ---- Actions ---- */
+  .actions{
+    padding:18px 22px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    padding:14px 16px;
+    border-radius:14px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    transition:transform .12s ease, filter .15s ease;
+  }
+  .btn:active{ transform:scale(0.98); }
+  .btn:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
+
+  .btn-save{
+    background:var(--moss-dark);
+    color:var(--bone);
+  }
+  .btn-save:hover{ filter:brightness(1.08); }
+
+  .btn-wa{
+    background:var(--whatsapp);
+    color:#fff;
+  }
+  .btn-wa:hover{ filter:brightness(1.08); }
+
+  .hint{
+    text-align:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    color:rgba(36,27,20,0.45);
+    margin:-2px 0 4px;
+  }
+
+  .footer{
+    text-align:center;
+    padding:0 22px 22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(36,27,20,0.35);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .btn{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="strata">
+    <svg viewBox="0 0 400 148" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="148" fill="#d9c4a0"/>
+      <path d="M0,18 C70,32 140,4 210,16 C280,28 340,8 400,20 L400,0 L0,0 Z" fill="#f7f2e7" opacity="0.55"/>
+      <path d="M0,58 C60,72 150,42 220,56 C300,72 350,46 400,60 L400,0 L0,0 Z" fill="#8c5a3c"/>
+      <path d="M0,88 C80,102 160,76 230,90 C300,104 350,80 400,92 L400,40 L0,40 Z" fill="#5c6b47" opacity="0.9"/>
+      <path d="M0,118 C70,132 150,104 230,116 C300,128 350,108 400,120 L400,148 L0,148 Z" fill="#a85a35" opacity="0.85"/>
+      <path d="M0,108 C70,120 150,96 230,108 C300,118 350,100 400,110 L400,90 C340,78 280,98 210,86 C140,74 70,102 0,88 Z" fill="#46512f" opacity="0.5"/>
+    </svg>
+    <div class="wordmark">
+      <span class="brand">PETRA NATURAL</span>
+      <span class="brand-sub">DOĞAL TAŞ &amp; MİNERAL</span>
+    </div>
+  </div>
+
+  <div class="avatar">TK</div>
+
+  <div class="identity">
+    <h1>Tamer Doğu Kaya</h1>
+    <p>Petra Natural</p>
+  </div>
+
+  <div class="info">
+    <a href="tel:+905536363873">
+      <span class="ic">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3.2l1.6 4.4-2 1.8c1.2 2.8 3.2 4.8 6 6l1.8-2 4.4 1.6V19c0 1.1-.9 2-2 2C9.8 21 3 14.2 3 6c0-1.1.9-2 2-2z"/></svg>
+      </span>
+      <span class="txt"><span class="label">Telefon</span>+90 553 636 38 73</span>
+    </a>
+    <a href="mailto:petranaturall@gmail.com">
+      <span class="ic">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      </span>
+      <span class="txt"><span class="label">E-posta</span>petranaturall@gmail.com</span>
+    </a>
+    <a href="https://www.google.com/maps/search/?api=1&query=M%C3%BCeyyetzade%2C%20Kemeralt%C4%B1%20Cd.%20No%3A3B%2C%2034425%20Beyo%C4%9Flu%2F%C4%B0stanbul" target="_blank" rel="noopener">
+      <span class="ic">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      </span>
+      <span class="txt"><span class="label">Adres</span>Müeyyetzade, Kemeraltı Cd. No:3B, 34425 Beyoğlu/İstanbul</span>
+    </a>
+    <a href="https://instagram.com/petranaturall" target="_blank" rel="noopener">
+      <span class="ic">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>
+      </span>
+      <span class="txt"><span class="label">Instagram</span>@petranaturall</span>
+    </a>
+  </div>
+
+  <div class="actions">
+    <a id="vcard-link" class="btn btn-save" download="Tamer_Dogu_Kaya.vcf">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><circle cx="8" cy="11" r="2"/><path d="M5 17c0-1.8 1.4-3 3-3s3 1.2 3 3"/><path d="M14 9h5M14 13h5"/></svg>
+      Rehbere Kaydet
+    </a>
+    <p class="hint">Dosya indirilir — açtığınızda rehbere eklenir</p>
+
+    <a class="btn btn-wa" href="https://wa.me/905536363873?text=Merhaba%2C%20kartvizitinizden%20ula%C5%9F%C4%B1yorum." target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.3-.6-2.2-1.1-3.1-2.6-.2-.3 0-.5.1-.7.2-.2.4-.5.6-.7.1-.2.1-.4 0-.6-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3 1 2.6 1.1 2.8.1.2 1.9 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5 0 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
+      WhatsApp'tan Yaz
+    </a>
+  </div>
+
+  <div class="footer">Dijital Kartvizit</div>
+</div>
+
+<script>
+  const vcard = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "N:Kaya;Tamer Doğu;;;",
+    "FN:Tamer Doğu Kaya",
+    "ORG:Petra Natural",
+    "TEL;TYPE=CELL,VOICE:+90 553 636 38 73",
+    "EMAIL;TYPE=INTERNET:petranaturall@gmail.com",
+    "ADR;TYPE=WORK:;;Müeyyetzade, Kemeraltı Cd. No:3B;Beyoğlu/İstanbul;;34425;Türkiye",
+    "URL:https://instagram.com/petranaturall",
+    "END:VCARD"
+  ].join("\r\n");
+
+  const link = document.getElementById("vcard-link");
+  link.setAttribute("href", "data:text/vcard;charset=utf-8," + encodeURIComponent(vcard));
+</script>
+
+</body>
+</html>
