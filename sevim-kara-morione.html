@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sevim Kara – Hotel Morione Karaköy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8d08a;
+    --cream: #f7f4ef;
+    --cream-dark: #ede8df;
+    --brown-dark: #2c2416;
+    --brown-mid: #4a3f2e;
+    --brown-muted: #8a7a5a;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Montserrat', sans-serif;
+  }
+
+  body {
+    background: #1a1510;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 20px 60px;
+    font-family: var(--sans);
+  }
+
+  /* ─── CARD ─── */
+  .card {
+    width: 100%;
+    max-width: 400px;
+    background: var(--cream);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gold-top {
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .card-inner {
+    padding: 32px 28px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Watermark lion SVG */
+  .lion-watermark {
+    position: absolute;
+    right: -20px;
+    top: 10px;
+    width: 200px;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  .hotel-eyebrow {
+    font-family: var(--sans);
+    font-size: 8px;
+    letter-spacing: 5px;
+    color: var(--brown-muted);
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .hotel-name {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--brown-dark);
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .hotel-location {
+    font-family: var(--sans);
+    font-size: 7.5px;
+    letter-spacing: 5px;
+    color: var(--brown-muted);
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .gold-divider {
+    width: 36px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .person-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--brown-dark);
+    margin-bottom: 3px;
+  }
+
+  .person-title {
+    font-family: var(--sans);
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  /* ─── CONTACTS ─── */
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .contact-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--cream-dark);
+    border: 0.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .contact-icon svg {
+    width: 13px;
+    height: 13px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .contact-label {
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--brown-muted);
+    font-weight: 400;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .contact-value {
+    font-size: 12px;
+    color: var(--brown-mid);
+    font-weight: 400;
+    font-family: var(--sans);
+  }
+
+  a.contact-item .contact-value {
+    color: var(--brown-dark);
+  }
+
+  /* ─── ACTIONS ─── */
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px;
+    background: var(--gold);
+    color: var(--brown-dark);
+    border: none;
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-primary svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--brown-dark);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  .btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: var(--brown-muted);
+    border: 0.5px solid var(--gold);
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { background: var(--cream-dark); color: var(--brown-dark); }
+
+  .btn-secondary svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  /* ─── FOOTER ─── */
+  .card-footer {
+    background: var(--cream-dark);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.5px solid #d4c89a;
+  }
+
+  .website-link {
+    font-family: var(--sans);
+    font-size: 9px;
+    color: var(--brown-muted);
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+
+  .website-link:hover { color: var(--brown-dark); }
+
+  .powered {
+    font-size: 7px;
+    color: var(--brown-muted);
+    opacity: 0.6;
+    letter-spacing: 0.5px;
+    font-family: var(--sans);
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="gold-top"></div>
+
+  <div class="card-inner">
+    <!-- Watermark lion -->
+    <svg class="lion-watermark" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" fill="#8a7a5a">
+      <path d="M100,15 C88,15 77,21 70,31 C63,21 50,17 38,23 C26,29 21,44 27,56 C18,61 12,71 14,84 C16,96 26,104 38,103 C36,115 41,127 51,133 C53,145 58,155 67,161 C76,167 87,164 95,158 C99,164 105,168 113,168 C121,168 127,164 131,158 C139,164 150,167 159,161 C168,155 173,145 175,133 C185,127 190,115 188,103 C200,104 210,96 212,84 C214,71 208,61 199,56 C205,44 200,29 188,23 C176,17 163,21 156,31 C149,21 138,15 126,15 Z"/>
+    </svg>
+
+    <p class="hotel-eyebrow">Hotel</p>
+    <h1 class="hotel-name">MORIONE</h1>
+    <p class="hotel-location">Karaköy · İstanbul</p>
+
+    <div class="gold-divider"></div>
+
+    <p class="person-name">Sevim Kara</p>
+    <p class="person-title">Genel Müdür</p>
+
+    <div class="contacts">
+
+      <a class="contact-item" href="mailto:sevim@morionehotels.com">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        </div>
+        <div>
+          <span class="contact-label">E-posta</span>
+          <span class="contact-value">sevim@morionehotels.com</span>
+        </div>
+      </a>
+
+      <a class="contact-item" href="tel:+905415181982">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <span class="contact-label">Mobil</span>
+          <span class="contact-value">+90 (541) 518 19 82</span>
+        </div>
+      </a>
+
+      <a class="contact-item" href="tel:+902122513535">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M15 18H9"/></svg>
+        </div>
+        <div>
+          <span class="contact-label">Telefon</span>
+          <span class="contact-value">+90 (212) 251 35 35</span>
+        </div>
+      </a>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <span class="contact-label">Adres</span>
+          <span class="contact-value">Kemankeş Mah. Maliye Cad.<br>Demirciler Sok. No:8, Beyoğlu</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button class="btn-primary" onclick="downloadVCard()">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Rehbere Kaydet
+      </button>
+
+      <a class="btn-secondary" href="https://wa.me/905415181982" target="_blank" style="background:#25D366;border-color:#25D366;color:#fff;">
+        <svg viewBox="0 0 24 24" style="stroke:#fff"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        WhatsApp'tan Yaz
+      </a>
+
+      <a class="btn-secondary" href="https://www.google.com/maps/search/Morione+Hotel+Karaköy" target="_blank">
+        <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Yol Tarifi Al
+      </a>
+
+      <a class="btn-secondary" href="https://www.morionehotels.com" target="_blank">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        Web Sitesi
+      </a>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <a class="website-link" href="https://www.morionehotels.com" target="_blank">www.morionehotels.com</a>
+    <span class="powered">Digital by BusinessCardTR</span>
+  </div>
+</div>
+
+<script>
+function downloadVCard() {
+  const vcard = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'FN:Sevim Kara',
+    'N:Kara;Sevim;;;',
+    'ORG:Hotel Morione Karaköy',
+    'TITLE:Genel Müdür',
+    'EMAIL;TYPE=WORK:sevim@morionehotels.com',
+    'TEL;TYPE=CELL:+905415181982',
+    'TEL;TYPE=WORK:+902122513535',
+    'TEL;TYPE=FAX:+902122513548',
+    'ADR;TYPE=WORK:;;Kemankeş Mah. Maliye Cad. Demirciler Sok. No:8;Beyoğlu;İstanbul;;TR',
+    'URL:https://www.morionehotels.com',
+    'END:VCARD'
+  ].join('\r\n');
+
+  const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'sevim-kara-morione.vcf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
